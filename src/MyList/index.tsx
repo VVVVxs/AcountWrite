@@ -1,8 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
-const MyList = () => {
+const MyList = ({ navigation }: any) => {
     const list = [
         {
             name: 'Amy Farha',
@@ -52,6 +52,10 @@ const MyList = () => {
                     bottomDivider
                 />
             ))}
+            <TouchableOpacity onPress={() => navigation.push('Details')}>
+                <Text>点击跳转</Text>
+            </TouchableOpacity>
+
         </View>
     );
 };
