@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import { navigatioonProps } from '../types';
 
-const MyList = ({ navigation }: any) => {
+const MyList = ({ navigation, route }: navigatioonProps) => {
     const list = [
         {
             name: 'Amy Farha',
@@ -53,7 +54,7 @@ const MyList = ({ navigation }: any) => {
                 />
             ))}
             <TouchableOpacity onPress={() => navigation.push('Details')}>
-                <Text>点击跳转</Text>
+                <Text>{route.params.greet}</Text>
             </TouchableOpacity>
 
         </View>

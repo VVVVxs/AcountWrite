@@ -5,14 +5,20 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MyList from './src/MyList';
 import Main from './src/Main';
+import { RootStackParamList } from './src/types';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Details">
-        <Stack.Screen name="Home" component={MyList} options={{title:'Overview'}}/>
+        <Stack.Screen
+          name="Home"
+          component={MyList}
+          options={{ title: 'Overview' }}
+          initialParams={{ greet: 'Hello World' }}
+        />
         <Stack.Screen name="Details" component={Main} />
       </Stack.Navigator>
     </NavigationContainer>
