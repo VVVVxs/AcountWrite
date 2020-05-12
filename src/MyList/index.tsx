@@ -1,9 +1,17 @@
-import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, TouchableOpacity, Text, Button } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { navigatioonProps } from '../types';
 
 const MyList = ({ navigation, route }: navigatioonProps) => {
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <Button onPress={() => setCount((count) => count + 1)} title="Update Count" />
+            )
+        })
+    })
     const list = [
         {
             name: 'Amy Farha',
@@ -53,10 +61,10 @@ const MyList = ({ navigation, route }: navigatioonProps) => {
                     bottomDivider
                 />
             ))}
+            <Text>Count:{count}</Text>
             <TouchableOpacity onPress={() => navigation.push('Details')}>
                 <Text>{route.params.greet}</Text>
             </TouchableOpacity>
-
         </View>
     );
 };
